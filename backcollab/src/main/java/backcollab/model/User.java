@@ -1,9 +1,19 @@
 package backcollab.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Entity
+@Table(name="user")
+@Component
 public class User {
 	private int userid;
 	private String name;
@@ -16,6 +26,10 @@ public class User {
 
 	@Transient
 private MultipartFile image;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID")
 public int getUserid() {
 	return userid;
 }
